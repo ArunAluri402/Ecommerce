@@ -1,21 +1,37 @@
 import React from 'react'
 import { Constants } from '../../utils/common/Constants'
 
-const CardComponent = ({ children, type }) => {
-    return (<>
-        {
-            type === Constants?.cardTypes[0]
-                ?
-                <div style={{ backgroundColor: "red", height: "200px", width: "200px" }}>{children}
-                </div>
+const ImageCardComponent = ({ source, type }) => {
+    const styles = {
+        width: type === Constants?.cardTypes[0] ? "312px"
+            :
+            type === Constants?.cardTypes[1] ? "648px"
                 :
-                <div style={{ backgroundColor: "blue", height: "400px", width: "312px" }}>
-                    {children}
-                </div>
-        }
+                (type === Constants?.cardTypes[2] || type === Constants?.cardTypes[4]) ? "200px"
+                    :
+                    "312px",
+        height: type === Constants?.cardTypes[0] ? "400px"
+            :
+            type === Constants?.cardTypes[1] ? "648px"
+                :
+                type === Constants?.cardTypes[2] ? "200px"
+                    :
+                    type === Constants?.cardTypes[4] ? "70px"
+                        : "312px",
+        backgroundColor: Constants?.colors?.stroke?.default,
+        boxSizing: 'border-box',
+        objectFit: 'contain'
+    }
+
+    return (<>
+
+        <div style={styles}>
+            <img style={styles} src={source} />
+        </div >
+
     </>
 
     )
 }
 
-export default CardComponent
+export default ImageCardComponent

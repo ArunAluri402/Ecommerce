@@ -92,6 +92,6 @@ export const Constants = {
 
 
     },
-    cardTypes: ["square", "box"]
+    cardTypes: ["productBox", "bigSquare", "smallSquare", "mediumSquare", "brandImage"]
 
 }
