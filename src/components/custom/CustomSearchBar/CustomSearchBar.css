@@ -1,0 +1,7 @@
+.search_icon{
+    object-fit: contain;
+    box-sizing: border-box;
+    width: 20;
+    height: 19;
+    cursor: pointer;
+}

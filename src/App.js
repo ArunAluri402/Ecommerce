@@ -9,6 +9,9 @@ function App() {
     <div className="App">
       <RouterWrapper children={<>
         <Route path={routerEndPoints?.landingPage} element={routerElements?.landingPage} />
+        <Route path={routerEndPoints?.myAccount} element={routerElements?.myAccount} />
+        <Route path={routerEndPoints?.shoppingCartPage} element={routerElements?.shoppingCartPage} />
+
       </>} />
     </div>
   );
