@@ -3,8 +3,8 @@ import React from 'react'
 import { Constants } from '../../utils/common/Constants'
 
 const CustomGridWrapper = ({ noOfParts, children }) => {
-    return (<Grid container>
-        <Grid item sx={{ overflow: "hidden", backgroundColor: Constants?.colors?.darks?.main }} xs={noOfParts}>
+    return (<Grid container spacing={2}>
+        <Grid item sx={{ overflow: "hidden", }} xs={noOfParts}>
             {children}
         </Grid>
     </Grid>

@@ -5,7 +5,7 @@ import CustomSearchBar from '../CustomSearchBar/CustomSearchBar'
 import CustomHeaderMenu from '../CustomHeaderMenu/CustomHeaderMenu'
 import { useNavigate } from 'react-router-dom'
 
-const CustomHeader = ({ styles, companyLogo, SearchIcon, onSearchImageClick, images, onClickHeaderMenuIcons }) => {
+const CustomHeader = ({ isMobile, styles, companyLogo, SearchIcon, onSearchImageClick, images, onClickHeaderMenuIcons, clicked, placeholder }) => {
     const navigate = useNavigate()
 
     const onCompanyLogoClick = () => {
@@ -15,9 +15,9 @@ const CustomHeader = ({ styles, companyLogo, SearchIcon, onSearchImageClick, ima
     return (
         <Grid container sx={styles}>
             <Grid item xs={12} className='header_flex_container'>
-                <CustomSearchBar onSearchImageClick={onSearchImageClick} SearchIcon={SearchIcon} />
+                <CustomSearchBar placeholder={placeholder} clicked={clicked} onSearchImageClick={onSearchImageClick} SearchIcon={SearchIcon} />
                 <img onClick={onCompanyLogoClick} className='company_logo' src={companyLogo} alt='compant-logo' />
-                <CustomHeaderMenu onClickHeaderMenuIcons={onClickHeaderMenuIcons} images={images} />
+                <CustomHeaderMenu isMobile={isMobile} onClickHeaderMenuIcons={onClickHeaderMenuIcons} images={images} />
             </Grid>
         </Grid>
     )

@@ -1,0 +1,37 @@
+.menuList_header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  max-width: 1320px !important;
+  margin: auto !important;
+}
+
+.menuList_header_items:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: 0.3s ease all;
+  color: #684457;
+}
+
+.hero_section {
+  max-width: 1320px !important;
+  margin: auto !important;
+  padding: 10px 15px;
+}
+
+@media screen and (max-width: 900px) {
+  .menuList_header_items {
+    font-size: 10px;
+    padding: 5px;
+    background-color: rgb(255, 240, 235);
+  }
+
+  .mobile_header_menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 5px 0;
+  }
+}
