@@ -138,6 +138,21 @@ const LandiingPage = () => {
           })
         }
       </>} />
+
+      <CustomGridWrapper noOfParts={12} className={"landing_category_grid"} children={<>
+        <Grid item className='landing_category_grid_container'>
+          <Typography textAlign={"center"} sx={{ textOrientation: 'sideways', writingMode: 'vertical-rl' }} className='landing_category_grid_text' textTransform={"uppercase"} variant='h4'>Explore new and popular styles</Typography>
+          <ImageCardComponent type={cardTypes[1]} source={itemImages?.items?.item16} />
+          <Grid item className='gird'>
+            <ImageCardComponent type={cardTypes[3]} source={itemImages?.items?.item20} />
+            <ImageCardComponent type={cardTypes[3]} source={itemImages?.items?.item18} />
+            <ImageCardComponent type={cardTypes[3]} source={itemImages?.items?.item17} />
+            <ImageCardComponent type={cardTypes[3]} source={itemImages?.items?.item19} />
+
+
+          </Grid>
+        </Grid>
+      </>} />
     </Grid>
   )
 }

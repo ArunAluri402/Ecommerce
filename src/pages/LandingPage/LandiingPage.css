@@ -51,6 +51,24 @@
   align-items: center;
   justify-content: space-between;
 }
+.landing_category_grid{
+  max-width: 1320px !important;
+  margin: auto !important;
+  padding-bottom: 25px;
+}
+.landing_category_grid_container{
+  display: flex;
+}
+.landing_category_grid_text{
+ transform: rotate(180deg);
+}
+.gird{
+  display: grid;
+  row-gap: 10px;
+  column-gap: 10px;
+  grid-template-columns: auto auto;
+  
+}
 
 @media screen and (max-width: 900px) {
   .menuList_header_items {
