@@ -1,9 +1,7 @@
 import React, { useState } from 'react'
-import ImageCardComponent from '../../components/common/CardComponent'
 import { brandImages, itemImages } from '../../utils/custom/Images'
 import CustomGridWrapper from '../../components/custom/CustomGridWrapper'
-import { Button, Divider, Grid, Typography, useMediaQuery, useTheme } from '@mui/material'
-import CustomHeader from '../../components/custom/CustomHeader/CustomHeader'
+import { Button, Grid, Typography, useMediaQuery, useTheme } from '@mui/material'
 import CompanyLogo from '../../assets/icons/logo.svg';
 import SearchIcon from '../../assets/icons/search.svg';
 import Person from '../../assets/icons/person.svg';
@@ -11,7 +9,9 @@ import Bag from '../../assets/icons/bag.svg';
 import { useNavigate } from 'react-router-dom'
 import { routerEndPoints } from '../../router'
 import './LandiingPage.css';
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import CustomWebsiteHeader from '../../components/custom/CustomWebsiteHeader/CustomWebsiteHeader'
+import ImageCardComponent from '../../components/common/CardComponent';
+
 
 
 const LandiingPage = () => {
@@ -90,53 +90,53 @@ const LandiingPage = () => {
     }
   ]
 
+  const brandImagesArray = [
+    {
+      id: 1,
+      image: brandImages?.brand?.brandImage1,
+    },
+    {
+      id: 2,
+      image: brandImages?.brand?.brandImage2,
+    },
+    {
+      id: 3,
+      image: brandImages?.brand?.brandImage3,
+    },
+    {
+      id: 4,
+      image: brandImages?.brand?.brandImage4,
+    },
+    {
+      id: 5,
+      image: brandImages?.brand?.brandImage5,
+    }
+  ]
+
   return (
     <Grid item xs={12}>
-      <CustomHeader isMobile={isMobile} placeholder={"Search here ...."} clicked={searchIconClicked} onClickHeaderMenuIcons={onClickHeaderMenuIcons} images={ImageArray} onSearchImageClick={onSearchImageClick} SearchIcon={SearchIcon} styles={customHeaderStyles} companyLogo={CompanyLogo} />
-      <Grid item xs={9} margin={"auto"}>
-        <Divider sx={{ maxWidth: "1320px", pt: isMobile ? "10px" : "20px", margin: "auto" }} />
-      </Grid>
-      <CustomGridWrapper noOfParts={12} children={<>
-        {
-          !isMobile
-            ?
-            <>
-              <Grid className='menuList_header' item xs={12}>
-                {
-                  menuListHeader?.map((item) => {
-                    return (<Typography className='menuList_header_items'>
-                      {item?.name}
-                    </Typography>)
-                  })
-                }
-              </Grid>
-            </>
-            :
-            <>
-              <Grid onClick={handleMenuClicked} className='mobile_header_menu' item xs={12}>
-                <Typography variant='h6' textAlign={"center"}>Menu</Typography> <ArrowDropDownIcon sx={{ transform: menuClicked ? 'rotate(180deg)' : 'inherit', transition: ' 0.3s ease all' }} />
-              </Grid>
-              {menuClicked &&
-                menuListHeader?.map((item) => {
-                  return (<Typography variant='body2' fontWeight={700} borderBottom={'2px solid #fff'} textAlign={'center'} className='menuList_header_items'>
-                    {item?.name}
-                  </Typography>)
-                })
-              }
-
-            </>
-        }
-      </>} />
+      <CustomWebsiteHeader CompanyLogo={CompanyLogo} ImageArray={ImageArray} SearchIcon={SearchIcon} customHeaderStyles={customHeaderStyles} handleMenuClicked={handleMenuClicked} isMobile={isMobile} menuClicked={menuClicked} menuListHeader={menuListHeader} onClickHeaderMenuIcons={onClickHeaderMenuIcons} onSearchImageClick={onSearchImageClick} searchIconClicked={searchIconClicked} />
       <CustomGridWrapper noOfParts={12} children={<>
         <Grid className='hero_section' item xs={12}>
-          <Typography variant='h3'>Collections</Typography>
-          <Typography variant='h6'>you can explore ans shop many differnt collection <br />
-            from various barands here.</Typography>
-          <Grid item xs={1.5} sx={{ backgroundColor: "#ccc", padding: "10px 25px", cursor: 'pointer', display: "flex", alignItems: "center" }}>
-            <img src={Bag} />
-            <Typography variant='body1'>Shop Now</Typography>
+          <Grid item className='hero_section_top'>
+            <Typography mb={5} variant='h2'>Collections</Typography>
+            <Typography mb={3} variant='h5'>you can explore ans shop many differnt collection <br />
+              from various barands here.</Typography>
+            <Button sx={{ backgroundColor: "#ccc", color: "#000", padding: "10px 25px", display: "flex", alignItems: "center" }} startIcon={<img src={Bag} />}>Shop Now</Button>
           </Grid>
+          <Grid item className='container'>
+            <img className='hero_img' src={itemImages?.items?.item15} />
+          </Grid>
+
         </Grid>
+      </>} />
+
+      <CustomGridWrapper noOfParts={12} className={"brandGrid"} children={<>
+        {
+          brandImagesArray?.map((item) => {
+            return <ImageCardComponent type={cardTypes[4]} key={item?.id} source={item?.image} />
+          })
+        }
       </>} />
     </Grid>
   )

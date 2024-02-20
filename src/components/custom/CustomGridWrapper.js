@@ -1,10 +1,9 @@
 import { Grid } from '@mui/material'
 import React from 'react'
-import { Constants } from '../../utils/common/Constants'
 
-const CustomGridWrapper = ({ noOfParts, children }) => {
-    return (<Grid container spacing={2}>
-        <Grid item sx={{ overflow: "hidden", }} xs={noOfParts}>
+const CustomGridWrapper = ({ noOfParts, children, className }) => {
+    return (<Grid className={className} container spacing={2}>
+        <Grid className={className} item sx={{ overflow: "hidden", }} xs={noOfParts}>
             {children}
         </Grid>
     </Grid>

@@ -18,7 +18,6 @@ const ImageCardComponent = ({ source, type }) => {
                     :
                     type === Constants?.cardTypes[4] ? "70px"
                         : "312px",
-        backgroundColor: Constants?.colors?.stroke?.default,
         boxSizing: 'border-box',
         objectFit: 'contain'
     }
