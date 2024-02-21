@@ -69,7 +69,15 @@
   grid-template-columns: auto auto;
   
 }
-
+.newsLetter{
+  max-width: 1320px !important;
+  margin: auto !important; 
+}
+.product_grid{
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  gap: 10px;
+}
 @media screen and (max-width: 900px) {
   .menuList_header_items {
     font-size: 10px;

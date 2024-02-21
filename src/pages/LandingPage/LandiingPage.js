@@ -11,6 +11,10 @@ import { routerEndPoints } from '../../router'
 import './LandiingPage.css';
 import CustomWebsiteHeader from '../../components/custom/CustomWebsiteHeader/CustomWebsiteHeader'
 import ImageCardComponent from '../../components/common/CardComponent';
+import ProductGridLayout from '../../Layout/common/ProductGridLayout';
+import { newsLetterProductsJson } from '../../JSON/Products';
+import CustomTabComponent from '../../components/custom/CustomTabComponent/CustomTabComponent';
+import CustomCarousel from '../../components/custom/CustomCarousel/CustomCarousel';
 
 
 
@@ -19,7 +23,8 @@ const LandiingPage = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
-  const cardTypes = ["productBox", "bigSquare", "smallSquare", "mediumSquare", "brandImage"]
+  const cardTypes = ["productBox", "bigSquare", "smallSquare", "mediumSquare", "brandImage"];
+  const [activeTab, setActiveTab] = useState(0)
 
   const [searchIconClicked, setSearchIconCliked] = useState(false);
   const [menuClicked, setMenuClicked] = useState(false);
@@ -112,6 +117,13 @@ const LandiingPage = () => {
       image: brandImages?.brand?.brandImage5,
     }
   ]
+  const handleTabChange = (event, index) => {
+    console.log(index, "obj")
+    setActiveTab(index)
+  };
+  const handleChangeIndex = (index) => {
+    setActiveTab(index);
+  };
 
   return (
     <Grid item xs={12}>
@@ -148,10 +160,12 @@ const LandiingPage = () => {
             <ImageCardComponent type={cardTypes[3]} source={itemImages?.items?.item18} />
             <ImageCardComponent type={cardTypes[3]} source={itemImages?.items?.item17} />
             <ImageCardComponent type={cardTypes[3]} source={itemImages?.items?.item19} />
-
-
           </Grid>
         </Grid>
+      </>} />
+      <CustomGridWrapper noOfParts={12} className={"newsLetter"} children={<>
+        <Typography mb={2} textAlign={"center"} textTransform={"capitalize"} variant='h3'>Or subscribe to the newsletter</Typography>
+        <CustomTabComponent ContentType={"Grid"} handleChangeIndex={handleChangeIndex} handleChange={handleTabChange} value={activeTab} TabArray={newsLetterProductsJson} gridColumns={3} className={"product_grid"} />
       </>} />
     </Grid>
   )
