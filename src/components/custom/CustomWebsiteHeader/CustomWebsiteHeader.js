@@ -4,7 +4,7 @@ import { Divider, Grid, Typography } from '@mui/material'
 import CustomGridWrapper from '../CustomGridWrapper'
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
-const CustomWebsiteHeader = ({ isMobile, searchIconClicked, onClickHeaderMenuIcons, ImageArray, onSearchImageClick, SearchIcon, customHeaderStyles, CompanyLogo, menuListHeader ,handleMenuClicked,menuClicked}) => {
+const CustomWebsiteHeader = ({ onClickMenuList, isMobile, searchIconClicked, onClickHeaderMenuIcons, ImageArray, onSearchImageClick, SearchIcon, customHeaderStyles, CompanyLogo, menuListHeader, handleMenuClicked, menuClicked }) => {
     return (<>
         <CustomHeader isMobile={isMobile} placeholder={"Search here ...."} clicked={searchIconClicked} onClickHeaderMenuIcons={onClickHeaderMenuIcons} images={ImageArray} onSearchImageClick={onSearchImageClick} SearchIcon={SearchIcon} styles={customHeaderStyles} companyLogo={CompanyLogo} />
         <Grid item xs={9} margin={"auto"}>
@@ -18,7 +18,7 @@ const CustomWebsiteHeader = ({ isMobile, searchIconClicked, onClickHeaderMenuIco
                         <Grid className='menuList_header' item xs={12}>
                             {
                                 menuListHeader?.map((item) => {
-                                    return (<Typography className='menuList_header_items'>
+                                    return (<Typography onClick={() => { onClickMenuList(item)}}className='menuList_header_items'>
                                         {item?.name}
                                     </Typography>)
                                 })
@@ -32,7 +32,7 @@ const CustomWebsiteHeader = ({ isMobile, searchIconClicked, onClickHeaderMenuIco
                         </Grid>
                         {menuClicked &&
                             menuListHeader?.map((item) => {
-                                return (<Typography variant='body2' fontWeight={700} borderBottom={'2px solid #fff'} textAlign={'center'} className='menuList_header_items'>
+                                return (<Typography onClick={() => { onClickMenuList(item?.id)}} variant='body2' fontWeight={700} borderBottom={'2px solid #fff'} textAlign={'center'} className='menuList_header_items'>
                                     {item?.name}
                                 </Typography>)
                             })
