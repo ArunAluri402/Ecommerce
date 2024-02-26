@@ -51,33 +51,65 @@
   align-items: center;
   justify-content: space-between;
 }
-.landing_category_grid{
+.landing_category_grid {
   max-width: 1320px !important;
   margin: auto !important;
   padding-bottom: 25px;
 }
-.landing_category_grid_container{
+.landing_category_grid_container {
   display: flex;
 }
-.landing_category_grid_text{
- transform: rotate(180deg);
+.landing_category_grid_text {
+  transform: rotate(180deg);
 }
-.gird{
+.gird {
   display: grid;
   row-gap: 10px;
   column-gap: 10px;
   grid-template-columns: auto auto;
-  
 }
-.newsLetter{
+.newsLetter {
   max-width: 1320px !important;
-  margin: auto !important; 
+  margin: auto !important;
 }
-.product_grid{
+.product_grid {
   display: grid;
   grid-template-columns: auto auto auto auto;
   gap: 10px;
 }
+.zara_container {
+  position: relative;
+}
+.zara_image_container {
+  position: relative;
+  background: #010204;
+
+}
+.zara_content {
+ display: flex;
+ flex-direction: column !important;
+ align-items: flex-start;
+ align-content: start;
+ justify-content: space-between;
+ position: absolute;
+ top:30%;
+ right: 20%;
+}
+.zara_logo2{
+  width: 181px;
+  height: 91px;
+}
+.zara_logo {
+  position: absolute;
+  width: 732px;
+  height: 309px;
+  top: 5%;
+  right: 0%;
+  z-index: 999;
+  /* filter: invert(100) contrast(100) brightness(100); */
+
+}
+
 @media screen and (max-width: 900px) {
   .menuList_header_items {
     font-size: 10px;
@@ -123,7 +155,5 @@
     flex-direction: column !important;
     align-items: center;
     justify-content: center;
-
   }
-  
 }

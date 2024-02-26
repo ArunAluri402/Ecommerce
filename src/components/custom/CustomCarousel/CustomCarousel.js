@@ -1,85 +1,49 @@
-import { Box, Card, IconButton, Slide, Stack } from '@mui/material';
-import React, { useEffect, useState } from 'react'
-import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
-import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import React, { useState } from 'react';
 
-const CustomCarousel = ({Children}) => {
-    const [cards, setcards] = useState([]);
-    const [currentPage, setCurrentPage] = useState(0)
-    const [direction, setDirection] = useState("left");
-    const cardsPerPage = 4
-    const duplicateCards = Array.from({
-        length: 10
-    },
-        (_, i) => <Card key={i} > 
-   
-        </Card>
+const Carousel = ({ images }) => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const handlePrevClick = () => {
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === 0 ? images.length - 1 : prevIndex - 1
     );
+  };
 
-    const handleNextPage = () => {
-        setDirection("left");
-        setCurrentPage(prevPage => prevPage + 1)
+  const handleNextClick = () => {
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === images.length - 1 ? 0 : prevIndex + 1
+    );
+  };
 
+  if (!images || images.length === 0) {
+    return <div>No images to display</div>;
+  }
+
+  const renderImages = () => {
+    const renderedImages = [];
+
+    for (let i = 0; i < 3; i++) {
+      const index = (currentImageIndex + i) % images.length;
+      renderedImages.push(
+        <img
+          key={index}
+          className={`image ${i === 1 ? 'center' : ''}`}
+          src={images[index].image}
+          alt={images[index].alt}
+        />
+      );
     }
-    const prevPage = () => {
-        setDirection("right")
-        setCurrentPage(prevPage => prevPage - 1)
 
-    }
-    useEffect(() => {
-        setcards(duplicateCards)
-    }, [])
-    return (
-        <Box sx={{
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-            alignContent: "center",
-            justifyContent: "center",
-            height: "400px"
-        }}>
-            <IconButton
-                onClick={prevPage}
-                disabled={currentPage === 0}
-                sx={{ margin: 5 }}
-            >
-                <NavigateBeforeIcon />
-            </IconButton>
-            <Box sx={{
-                display: "flex",
-                flexDirection: "row",
-                alignItems: "center",
-                alignContent: "center",
-                justifyContent: "center",
-                height: "400px"
-            }}>
-                {
-                    cards.map((card, index) => (
-                        <Box key={`card-${index}`}
-                            sx={{
-                               
-                                display: currentPage === index ? 'block' : 'none'
-                            }}
-                        >
-                            <Slide direction={direction} in={currentPage === index} >
-                                <Stack spacing={2} direction={"row"} alignContent={"center"} justifyContent={"center"}>
-                                {Children}
-                                </Stack>
-                            </Slide>
-                        </Box>
-                    ))
-                }
-            </Box>
+    return renderedImages;
+  };
 
-            <IconButton
-                onClick={handleNextPage}
-                disabled={currentPage >= Math.ceil((cards.length || 0) / cardsPerPage) - 1}
-                sx={{ margin: 5 }}
-            >
-                <NavigateNextIcon />
-            </IconButton>
-        </Box >
-    )
-}
+  return (
+    <div className="carousel">
+      <button onClick={handlePrevClick}>&lt;</button>
+      <div className="carousel-images">{renderImages()}</div>
+      <button onClick={handleNextClick}>&gt;</button>
+    </div>
+  );
+};
 
-export default CustomCarousel
+export default Carousel;

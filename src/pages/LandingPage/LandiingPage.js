@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { brandImages, itemImages } from '../../utils/custom/Images'
+import { brandImages, itemImages, zaraImages } from '../../utils/custom/Images'
 import CustomGridWrapper from '../../components/custom/CustomGridWrapper'
 import { Button, Grid, Typography, useMediaQuery, useTheme } from '@mui/material'
 import CompanyLogo from '../../assets/icons/logo.svg';
@@ -166,6 +166,23 @@ const LandiingPage = () => {
       <CustomGridWrapper noOfParts={12} className={"newsLetter"} children={<>
         <Typography mb={2} textAlign={"center"} textTransform={"capitalize"} variant='h3'>Or subscribe to the newsletter</Typography>
         <CustomTabComponent ContentType={"Grid"} handleChangeIndex={handleChangeIndex} handleChange={handleTabChange} value={activeTab} TabArray={newsLetterProductsJson} gridColumns={3} className={"product_grid"} />
+      </>} />
+      <CustomGridWrapper noOfParts={12} className={"zara_container"} children={<>
+        <Grid item xs={12} >
+          <Grid className='zara_image_container'>
+            <img src={zaraImages?.character} />
+            <img src={zaraImages?.logo} className='zara_logo' />
+          </Grid>
+
+          <Grid item className='zara_content'>
+            <img src={zaraImages?.logo2} className='zara_logo2' />
+            <Typography color={"#fff"} padding={"15px 0"} maxWidth={"504px"} variant='h6'>Lustrous yet understated. The new evening<br/>
+              wear collection exclusively offered at the<br/>
+              reopened Giorgio Armani boutique in Los<br/>
+              Angeles.</Typography>
+            <Button variant='contained'  sx={{backgroundColor:"#fff", borderRadius : 0, color:"#000", textTransform: 'capitalize' }}>See Collection</Button>
+          </Grid>
+        </Grid>
       </>} />
     </Grid>
   )
