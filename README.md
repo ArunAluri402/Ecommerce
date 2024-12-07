@@ -13,3 +13,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 Expected website 
 ![index](https://github.com/ArunAluri402/Ecommerce/assets/99807553/2ff91174-6922-45b9-95fd-e369ae9c609a)
+
+
+https://chatgpt.com/share/67543bfc-fc14-8000-84d7-996de5a42933
